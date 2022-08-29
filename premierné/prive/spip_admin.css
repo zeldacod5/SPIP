@@ -1,0 +1,371 @@
+/* Les boutons d'admin survolent la page (sauf # FORMULAIRE_ADMIN) */
+.spip-admin-bloc,
+.spip-admin-float { z-index: 100; position: fixed; right: 20%; top: 0; white-space: nowrap; }
+
+/* Couleurs et design des boutons d'admin */
+.spip-admin-boutons { margin: 0; padding: .4em 1em; background: #666; border: 0; font-weight: bold; border-radius: 0 0 .3em .3em; opacity: .7; }
+.spip-admin-boutons,
+a.spip-admin-boutons,
+.spip-admin-boutons a { color: #FFF; text-decoration: none; }
+a:focus.spip-admin-boutons,
+.spip-admin-boutons a:focus,
+a:hover.spip-admin-boutons,
+.spip-admin-boutons a:hover { opacity: 1; }
+a:active.spip-admin-boutons,
+.spip-admin-boutons a:active { background-color: #333; opacity: 1; }
+.spip-admin-boutons:hover { background: #000; } 
+
+/* Style pour le mode debug */
+#spip-debug-toggle {position:fixed; top:30px; right:34px; width:32px;height:32px; cursor:pointer; z-index:10000;}
+#spip-debug, #spip-debug-header { background-color: #f0f0f0; font-family: Verdana, Geneva, sans-serif; position:absolute;top:30px;left:0;width:100%;height:100%;z-index:10000; font-size:1em; text-align:left; }
+#spip-debug ul table { font-size: 80%; }
+#spip-debug fieldset { background-color: #fff; font-family: Courier, "Courier New", monospace; font-size: 12px; margin-bottom: 1em; display: block; padding: .5em; }
+#spip-debug fieldset fieldset { background-color: #ccf; font-family: Verdana, Geneva, sans-serif; font-size: 80%; width:99%; margin-left: auto; }
+#spip-debug legend { background-color: #fff; border: solid 1px #f00; padding: 1px 1em; font-family: Verdana, Geneva, sans-serif; font-weight: bold; display: block; text-transform: none; }
+#spip-debug legend a { font-weight: normal; }
+#spip-debug fieldset fieldset legend { border: solid 1px #00F; font-weight: normal; }
+#spip-debug a { text-decoration: none; color: blue; }
+#spip-debug a:hover { text-decoration: underline; background-color: transparent; color: red; }
+#spip-debug fieldset table {font-family: Courier,"Courier New",monospace; font-size: 12px; line-height:.7em; margin-bottom: 0; }
+#spip-debug fieldset table th, #spip-debug fieldset table td, #spip-debug fieldset table caption {padding: 0.5em; }
+
+#debug_boucle fieldset { background-color: #ccf; padding-bottom: 1em; line-height: 1.5em; }
+#debug_boucle fieldset div { width: 80%; }
+#debug_boucle fieldset fieldset { background-color: #fff; font-family: Verdana, Geneva, sans-serif; padding: 0.5em 1.5em; }
+#spip-debug code { background-color: #ccf; line-height:1.3em;}
+
+#spip-boucles { min-height: 200px; max-height: 50%; margin: 0 0 1em 0; padding: .5em; overflow: -moz-scrollbars-vertical; overflow-y: auto; border-top: 1px solid #39F; border-bottom: 2px solid #666; }
+
+.spip-env fieldset { background-color: #fff; border: solid 1px #008; margin: 2px 2em; }
+.spip-env legend { background-color: #fff; border: solid 1px #f00; padding: 1px 1em; font-weight: bold; }
+.spip-env fieldset div { overflow: auto; }
+.spip-env fieldset div table tbody tr:nth-child(2n) th, .spip-env fieldset div table tbody tr:nth-child(2n) td, .spip-env fieldset div table tbody tr.even th, .spip-env fieldset div table tbody tr.even td { background: none repeat scroll 0 0 #ccccff; }
+
+.inclure_blocs {
+	padding:0 !important;
+	margin:0 !important;
+	border:0 !important;
+	border-bottom:2px solid #FEFF7F !important;
+	background:url(images/fond-inclure.png) repeat top left !important;
+}
+.inclure_blocs > h6 {
+	background: #FEFF7F;
+	color: #000000;
+	margin: 0;
+	padding: 2px;
+	margin-bottom: 2px;
+	clear: both;
+	font-family: monospace;
+	font-size: 0.66rem;
+	line-height: 1;
+	text-align: left;
+	letter-spacing: normal;
+	text-transform: none;
+}
+.inclure_blocs > h6:hover,
+.inclure_blocs.hover {
+	background-color: #FDFF1F !important;
+}
+
+#debug-nav {position:absolute;top:90px;right:10px;width:auto;max-width:50vw;border:0; background:#f0d9d9; padding:20px; filter:alpha(opacity=90); -moz-opacity:0.9; opacity: 0.90; z-index: 9999; text-align: left; font-family: Verdana, Geneva, sans-serif; font-size: 12px; }
+#debug-nav caption {background:red;color:#fff;font-size:1.3em;font-weight:bold;padding:7px;margin-bottom:0;}
+#debug-nav td,#debug-nav th {border-collapse: collapse;border:1px solid #999;}
+#debug-nav th {background:#000;color:#fff;font-weight:bold;border-color:#333;}
+
+#debug-profile {font-size:0.8em;position:absolute;top:20px;width:100%;border:1px; background:#eee; padding:20px; filter:alpha(opacity=90); -moz-opacity:0.9; opacity: 0.90; z-index: 1000; text-align: left; }
+#debug-profile > caption {background:#ccc;color:#000;font-size:1.3em;font-weight:bold;padding:7px;}
+#debug-profile > caption table {font-size:0.7em;background:#fff;color:#333;padding:10px;margin-top:10px;}
+#debug-profile > caption table td {border-bottom:1px solid #999;}
+#debug-profile > caption table td.time {padding:0 5px;}
+
+#debug-profile > tbody > tr > th {border-bottom:1px solid #999;}
+#debug-profile > tbody > tr > td {vertical-align: top;border-bottom:1px solid #999;border-right:1px solid #999;}
+#debug-profile > tbody table caption {}
+#debug-nav td,#debug-nav th {border-collapse: collapse;border:1px solid #999;}
+#debug-nav th {background:#000;color:#fff;font-weight:bold;border-color:#333;}
+
+#debug-profile table.explain {font-size:0.8em;width:100%;background:#e0e0e0;}
+#debug-profile table.explain caption {font-size:1.1em;background:#fff;text-align:left;padding:5px;font-weight:bold;}
+#debug-profile table.explain caption br {display:none;}
+
+#debug-profile table.explain td,#debug-profile table.explain th {border-bottom:1px solid #999;padding:0 5px;}
+#debug-profile table.explain th {padding:0 5px;color:#444;}
+
+.spip-debug-arg {font-family: Courier, "Courier New", monospace; font-weight: bold;}
+.liste-reqs .spip-debug-arg {display:block;float:left;width:3em;text-align:right;}
+
+/* Couleurs et design de la previsu */
+.spip-previsu { background-color: #333; color: #eeeeee;font-size: 18px; text-transform: uppercase;position: absolute; top: 0px; left: 0px;padding: 10px 50px; background-position: 5px 5px;background-repeat: no-repeat;display:block;opacity: 0.8;-moz-opacity: 0.8;filter: alpha(opacity=80);}
+
+/* Debug des traductions */
+.debug-traduction {color: #264409;background-color:#E6EFC2;}
+.debug-traduction-prive {color: #514721;background-color:#FFF6BF;}
+.debug-traduction-erreur {background-color: #fbe3e4; color: #8a1f11;}
+
+
+/* Style pour le mode debug */
+html #spip-debug-toggle {
+  top:30px;
+  right:34px;
+}
+html #spip-debug-header {
+  background: #f0e144;
+  position: fixed;
+  top: 30px;
+  height: 32px;
+  width: 100px;
+  left: auto;
+  right: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+html #spip-debug, html #debug-profile {
+  background: #dee2e6;
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  height: auto;
+  left: 0;
+  right: 0;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  overflow: auto;
+}
+html #spip-boucles {
+  margin: 0;
+  border-bottom: 5px solid #212529 !important;
+  color: #6a6a85;
+  background-color: #f5f5ff;
+  border-color: #f1f1ff;
+  color: inherit;
+}
+html #spip-boucles a {
+  color: #f48719;
+}
+html #spip-boucles a:hover, html #spip-boucles a:focus, html #spip-boucles a:active {
+  color: #b86109;
+  text-decoration: underline;
+}
+html #spip-boucles hr {
+  border-top-color: #d7d7ff;
+}
+html #spip-boucles .alert-link {
+  color: #535368;
+}
+html #spip-boucles fieldset {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0;
+  margin-bottom: 2rem;
+  border: 1px solid #adb5bd;
+}
+html #spip-boucles fieldset legend {
+  background: #e9ecef;
+  padding: 0.25em 30px;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace;
+  color: #212529;
+  font-size: 0.875rem;
+  width: auto;
+  border: 1px solid #adb5bd;
+  margin: 0;
+  margin-left: -1px;
+}
+html #spip-boucles fieldset legend a {
+  float: right;
+  margin-left: 10px;
+  font-size: 1rem;
+  font-family: initial;
+}
+html #spip-boucles fieldset legend + span {
+  font-size: 0.8rem;
+  margin-right: 30px;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace;
+}
+html #spip-boucles fieldset legend + span + br {
+  display: none;
+}
+html #spip-boucles fieldset .spip-env {
+  margin: 30px;
+}
+html #spip-boucles fieldset .spip-env fieldset {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace;
+  font-size: 87.5%;
+  background: #fff;
+  border: 0;
+  margin: 0;
+  width: 100%;
+}
+html #spip-boucles fieldset .spip-env fieldset legend {
+  font-family: inherit;
+  background: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: auto;
+  color: inherit;
+  float: left;
+  margin-top: -1.5rem;
+  cursor: pointer;
+}
+html #spip-boucles fieldset .spip-env fieldset legend:after {
+  content:' +';
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  text-align: center;
+  vertical-align: bottom;
+  margin-left: 0.5em;
+  background: #eee;
+  border-radius: 50%;
+}
+html #spip-boucles fieldset .spip-env fieldset.expanded legend:after {
+  content:' -';
+}
+
+html #spip-boucles fieldset .spip-env fieldset table {
+  font-family: inherit;
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1;
+}
+html #spip-boucles fieldset .spip-env fieldset table tbody, html #spip-boucles fieldset .spip-env fieldset table tr, html #spip-boucles fieldset .spip-env fieldset table td {
+  font-family: inherit;
+  font-size: inherit;
+  display: flex;
+}
+html #spip-boucles fieldset .spip-env fieldset.expanded table tr {
+  flex-basis: 100% !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  overflow: auto !important;
+}
+html #spip-boucles fieldset .spip-env fieldset table tr {
+  flex-basis: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 1.5rem;
+}
+@media (min-width: 640px) {
+  html #spip-boucles fieldset .spip-env fieldset table tr {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}
+@media (min-width: 980px) {
+  html #spip-boucles fieldset .spip-env fieldset table tr {
+    flex-basis: 33%;
+    max-width: 33%;
+  }
+}
+@media (min-width: 1400px) {
+  html #spip-boucles fieldset .spip-env fieldset table tr {
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+}
+@media (min-width: 1800px) {
+  html #spip-boucles fieldset .spip-env fieldset table tr {
+    flex-basis: 20%;
+    max-width: 20%;
+  }
+}
+html #spip-boucles fieldset .spip-env fieldset table td:first-child {
+  flex-basis: 15%;
+}
+html #spip-boucles fieldset .spip-env fieldset table td:last-child {
+  flex-basis: 85%;
+}
+html #spip-boucles fieldset .spip-env fieldset table tbody {
+  flex-wrap: wrap;
+}
+html #spip-boucles fieldset .spip-env fieldset table tbody tr:nth-child(2n +1) td {
+  background: #f8f9fa;
+}
+html #spip-boucles fieldset .spip-env fieldset table tbody tr:nth-child(2n) td {
+  background: #dee2e6;
+}
+html #spip-boucles fieldset .spip-env + table {
+  font-family: inherit;
+  font-size: 0.8125rem;
+  line-height: 1.25em;
+}
+html #spip-boucles fieldset .spip-env + table tr td:nth-child(1), html #spip-boucles fieldset .spip-env + table tr td:nth-child(2), html #spip-boucles fieldset .spip-env + table tr td:nth-child(3), html #spip-boucles fieldset .spip-env + table tr td:nth-child(4) {
+  width: 5rem;
+}
+html #spip-boucles fieldset .spip-env + table tr td:nth-child(6), html #spip-boucles fieldset .spip-env + table tr td:nth-child(7), html #spip-boucles fieldset .spip-env + table tr td:nth-child(8) {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace;
+  font-size: 87.5%;
+}
+html #debug_boucle a {
+  color: #f48719;
+}
+html #debug_boucle a:hover, html #debug_boucle a:focus, html #debug_boucle a:active {
+  color: #b86109;
+  text-decoration: underline;
+}
+html #debug_boucle fieldset {
+  background: #f5f5ff;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  line-height: 1.25;
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+  border: 0;
+}
+html #debug_boucle fieldset legend {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace;
+  font-size: 1.2rem;
+  color: inherit;
+  margin: 0;
+  border: 0;
+  padding: 0.25em 30px;
+  background: #ced4da;
+}
+html #debug_boucle fieldset legend + div code {
+  background: #dbdbff;
+}
+html #debug_boucle fieldset h3 {
+  font-family: inherit;
+  font-size: inherit;
+  margin: 10px 0;
+  padding: 5px;
+  background: #f8f9fa;
+}
+html #debug_boucle fieldset fieldset {
+  font-family: initial;
+  margin : 1rem 0;
+  padding: 1rem;
+  font-size: 1rem;
+  background: #fff;
+  border-top:3px solid #888;
+  width: auto;
+}
+html #debug-profile {
+  display: block;
+  opacity: 1;
+}
+html #debug-profile caption {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+}
+html #debug-profile > tbody {
+  display: table;
+  width: 100%;
+  font-size: 0.9em;
+}
+html #debug-profile table.explain {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace;
+}
+html #debug-profile table.explain caption {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace;
+  display: block;
+  width: 100%;
+}
+html #debug-profile table.explain tbody {
+  display: table;
+  width: 100%;
+}

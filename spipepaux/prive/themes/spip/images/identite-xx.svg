@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <style>
+  .st1{stroke:#1d83d4;stroke-width:4}
+  </style>
+  <path fill="#666" d="M58 58H6c-2.2 0-4-1.8-4-3.9V10.9C2 8.8 3.8 7 6 7h52c2.2 0 4 1.8 4 3.9v43.2c0 2.1-1.8 3.9-4 3.9z" />
+  <path fill="#fff" d="M8 13h48v39H8V13z" />
+  <circle fill="#fff" class="st1" cx="18.1" cy="27.5" r="4.9"/>
+  <circle fill="#fff" class="st1" cx="45.9" cy="27.5" r="4.9"/>
+  <path class="st1" d="M25 38c0 3 3 6 7 6M39 38c0 3-3 6-7 6"/>
+</svg>

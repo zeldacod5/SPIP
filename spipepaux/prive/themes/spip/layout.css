@@ -1,0 +1,314 @@
+/**
+ * ======
+ * Layout
+ * ======
+ *
+ * Organisation :
+ *
+ * 1. Layout général de la page
+ * 2. Contenus textes limités en largeur
+ * 3. Divers
+ * 4. Grenier
+ *
+ * Breakpoints : 780px / 1200px
+ *
+ * Markup :
+ *
+ * body
+ * |--#bando_haut
+ * |  |--#bando_xxx (x4)
+ * |     |--.largeur
+ * |--#page
+ * |  |--.largeur
+ * |  |  |--#haut
+ * |  |     |--#chemin
+ * |  |--#conteneur(.pleine_largeur)
+ * |     |--#navigation
+ * |     |--#extra
+ * |     |--#contenu
+ * |--#pied
+ *    |--.largeur
+ */
+
+
+/**
+ * ============
+ * 0. Variables
+ * ============
+ */
+
+
+/* Variable utilitaire pour donner la largeur disponible, tient compte des gouttières de .largeur
+   Utile pour les éléments positionnés en absolute par ex. */
+:root {
+	--spip-vw: 100vw - calc(10px * 2);
+}
+@media (min-width: 960px) {
+	:root {
+		--spip-vw: 100vw - calc(20px * 2);
+	}
+}
+@media (min-width: 1440px) {
+	:root {
+		--spip-vw: 1440px - calc(20px * 2);
+	}
+}
+
+
+/**
+ * ============================
+ * 1. Layout général de la page
+ * ============================
+ */
+
+/*
+ * Par defaut les vieux navigateurs qui ne supportent rien : direct en 3 colonnes et basta.
+ * on met des min-width et des max-width
+ */
+
+.largeur,
+.table_page,
+.messages-alertes {
+	max-width: 1440px;
+	min-width: 960px;
+}
+
+.largeur {
+	margin: auto;
+	text-align: left;
+	padding: 0 10px;
+}
+#haut {
+	margin-top: 10px;
+}
+
+#page {
+	text-align: center;
+}
+
+/* Navigateurs napthaline : par defaut */
+#conteneur {
+	text-align: center;
+}
+#contenu {
+	text-align: left;
+	display: inline-block;
+	width: 61%;
+	margin-left: auto;
+	margin-right: auto;
+	min-height: 50vh;
+}
+#navigation {
+	overflow-wrap: break-word;
+	text-align: left;
+	width: 18%;
+	float: left;
+}
+#extra {
+	overflow-wrap: break-word;
+	text-align: left;
+	width: 18%;
+	float: right;
+}
+
+/* Les pages qui demandent à être en pleine largeur (sans #nav ni #extra) */
+.pleine_largeur #contenu {
+	width: 100%;
+}
+.pleine_largeur #navigation,
+.pleine_largeur #extra {
+	display: none;
+}
+
+
+/**
+ * Écrans moyens : on passe en 2 colonnes.
+ * Fallback vieux navigateurs : direct en 3 colonnes et basta.
+ */
+@media (min-width: 720px) {
+	.largeur,
+	.table_page,
+	.messages-alertes {
+		min-width: 0;
+	}
+
+	/* Navigateurs récents */
+	@supports (display: grid) {
+		/* Les pages "normales" */
+		#conteneur:not(.pleine_largeur) {
+			text-align: left;
+			display: grid;
+			grid-column-gap: 2%;
+			/*grid-template-columns:
+				min-content
+				minmax(auto, calc(100% - (8em + 8vw)));*/
+			grid-template-rows: auto 1fr; /* la 1ère ligne doit se collapser */
+			grid-template-columns:
+				25%  /* navigation & extra */
+				73%; /* contenu */
+			grid-template-areas:
+				"navigation contenu "
+				"extra      contenu ";
+			justify-content: center;
+		}
+		#contenu {
+			grid-area: contenu;
+			width: initial;
+			margin: 0;
+		}
+		#navigation {
+			grid-area: navigation;
+			width: initial;
+			margin-right: 0;
+		}
+		#extra {
+			grid-area: extra;
+			width: initial;
+		}
+	}
+}
+@media (min-width: 960px) {
+	.largeur {
+		padding: 0 20px;
+	}
+	@supports (display: grid) {
+		#conteneur:not(.pleine_largeur) {
+			grid-template-columns:
+				25%  /* navigation & extra */
+				73%; /* contenu */
+		}
+	}
+}
+
+
+/**
+ * Sur écrans larges : 3 colonnes.
+ */
+@media (min-width: 1200px) {
+	@supports (display: grid) {
+		#conteneur:not(.pleine_largeur) {
+			grid-column-gap: 3%;
+			grid-template-columns:
+				20%  /* navigation */
+				56%  /* contenu */
+				18%; /* extra */
+			grid-template-areas:
+				"navigation contenu extra"
+				"navigation contenu extra";
+		}
+	}
+}
+
+/* petit ecrans : flex pour reordonner */
+@media (max-width: 719.999px) {
+	.largeur,
+	.table_page,
+	.messages-alertes {
+		min-width: 0;
+	}
+
+	#page {
+		margin: auto;
+	}
+
+	#haut {
+		text-align: center;
+		margin-top: 10px;
+	}
+
+	#contenu {
+		float:none;
+		width: auto;
+		max-width: 100%;
+	}
+
+	#navigation {
+		float:none;
+		width: auto;
+		max-width: 100%;
+	}
+
+	#extra {
+		float:none;
+		width: auto;
+		max-width: 100%;
+	}
+
+	#pied {}
+
+	@supports (display: flex) {
+		#conteneur {
+			display: flex;
+			flex-direction: column;
+		}
+		#navigation {
+			order:1;
+		}
+		#contenu {
+			order:2;
+		}
+		#extra {
+			order:3;
+		}
+	}
+}
+
+/**
+ * =====================================
+ * 2. Contenus textes limités en largeur
+ * =====================================
+ * On essaie d'obtenir environ 60 charactères max par ligne.
+ */
+
+.pleine_largeur .formulaire_spip {
+	max-width: 60em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/**
+ * =========
+ * 3. Divers
+ * =========
+ */
+
+.centered {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.wrap-messages-alertes {
+	padding: 5px 10px;
+	background: #eee;
+}
+@media (min-width: 960px) {
+	.wrap-messages-alertes {
+		padding: 5px 20px;
+	}
+}
+div.messages-alertes {
+	text-align: right;
+	clear: both;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+/**
+ * ==========
+ * 4. Grenier
+ * ==========
+ */
+
+.table_page {
+	margin: auto;
+	text-align: left;
+	clear: both;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 0.5em;
+}
+
+div.table_page {
+	margin-top: 1em;
+}

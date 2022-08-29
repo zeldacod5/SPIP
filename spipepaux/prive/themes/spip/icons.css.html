@@ -1,0 +1,357 @@
+[(#REM)
+
+	Ce squelette definit les styles des boutons icônes de l'espace prive
+
+	Organisation du fichier :
+
+	1. Icones horizontales et verticales
+	2. Divers et dépréciés
+
+<style>]
+#CACHE{3600*100,cache-client}
+#HTTP_HEADER{Content-Type: text/css;charset=utf-8}
+#HTTP_HEADER{Vary: Accept-Encoding}
+
+#SET{iconfontsize,0.85em}
+#SET{iconpadding,0.5em}
+#SET{couleurs, #ARRAY{
+	base,       "hsl(0, 0%, 93%)",
+	survol,     #ENV{claire},
+	actif,      #ENV{foncee},
+}}
+
+/**
+ * ==============================
+ * 1. Icône verticale/horizontale
+ * ==============================
+ *
+ * Par défaut, icône verticale.
+ * Une variante horizontale.
+ *
+ * Markup :
+ * <span class="icone danger horizontale s24 left">
+ *   <a>
+ *     <img>
+ *     <b>texte</b>
+ *   </a>
+ * </span>
+ */
+
+.icone {
+	position: relative; /* Afin que le z-index soit pris en compte */
+	z-index: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border-radius: 0.25em;
+	vertical-align: middle;
+}
+
+/* Conteneur lien */
+.icone a {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: inherit;
+	justify-content: inherit;
+	width: 5em;
+	padding: [(#GET{iconpadding}) ]0;
+	cursor: pointer;
+	transition: all 0.2s;
+	border-radius: inherit;
+}
+
+/* Label */
+.icone b,
+.box .icone b {
+	font-weight: 500;
+	margin: 0.5em 0 0;
+	font-size: #GET{iconfontsize};
+	line-height: 1;
+	color: #ENV{foncee};
+	/* height: [(#ENV{line-height}|strmult{2}|strdiv{#GET{iconfontsize}})em]; */
+}
+
+/* Survol et cie */
+.icone a:hover,
+.icone a:focus {
+	text-decoration: none;
+}
+.icone a:hover .icone-image,
+.icone a:focus .icone-image {
+	background-color: #GET{couleurs/survol};
+	        box-shadow: none;
+}
+.icone a:active .icone-image,
+.icone a:active .icone-image {
+	background-color: #GET{couleurs/actif};
+}
+.icone a:hover b,
+.icone a:focus b {
+	color: #222;
+}
+/* Si icone fonction, animation bling */
+.icone a:hover .icone-image.icone-fonction,
+.icone a:focus .icone-image.icone-fonction {
+	background-color: transparent;
+}
+.icone a:hover .icone-fonction img,
+.icone a:focus .icone-fonction img {
+	opacity: 0;
+}
+.icone a:hover .icone-fonction:after,
+.icone a:focus .icone-fonction:after {
+	background-size: 60% auto;
+	background-position: center center;
+	transition: background 0.2s; /* aller */
+}
+
+/**
+ * Images
+ * Nb : les URLs sont mutualisées avec les boutons, donc définies dans boutons.css
+ * .icone-image : image de base
+ * .icone-fonction : mini image optionnelle par-dessus la précédente
+ */
+.icone .icone-image {
+	padding: #GET{iconpadding};
+	border-radius: inherit;
+	/* background-color: hsla(0, 0%, 0%, 0.025); */
+	background-color: #GET{couleurs/base};
+	box-shadow: inset 0 0 0.75em hsla(0, 0%, 0%, 0.033);
+	transition: all 0.2s;
+}
+.icone .icone-image img {
+	display: block;
+	transition: inherit;
+}
+.icone-fonction {
+	display: flex; /* éviter espacements indésirables autour de l'image */
+	position: relative;
+}
+.icone-fonction:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-position: bottom[ (#GET{iconpadding}) ]right[ (#GET{iconpadding})];
+	background-repeat: no-repeat;
+	transition: background 0.1s; /* Retour */
+}
+.icone-fonction-new:after {
+	background-position-y: [(#GET{iconpadding})];
+}
+#SET{icones, #LISTE{add, new, del, config, edit}}
+<BOUCLE_icones_images(DATA){source table, #GET{icones}}>
+.icone-fonction-#VALEUR:after {
+	background-image: url(#CHEMIN_IMAGE{#VALEUR-xx.svg});
+}
+</BOUCLE_icones_images>
+
+/* Variante horizontale */
+.icone.horizontale {
+	clear: both;
+	justify-content: flex-start;
+	text-align: #ENV{left};
+}
+.icone.horizontale a {
+	padding: 0.25em 0;
+	flex: 1 1 auto;
+	flex-flow: row nowrap;
+	width: auto;
+}
+.icone.horizontale b {
+	margin-top: 0;
+	margin-#ENV{left}: 0.5em;
+}
+.icone.horizontale a:not(:hover):not(:focus) b {
+	color: #666;
+	color: hsla(0, 0%, 0%, 0.6);
+}
+.icone.horizontale .icone-image {
+	padding: 0;
+	background: transparent;
+	        box-shadow: none;
+}
+.icone.horizontale .icone-fonction:after {
+	background-position: bottom 0 right 0;
+}
+.icone.horizontale .icone-fonction-new:after {
+	background-position-y: 0;
+}
+.icone.horizontale a:hover .icone-image,
+.icone.horizontale a:focus .icone-image {
+	background: #GET{couleur/survol};
+}
+
+/* Tailles */
+.s16 .icone-image img {
+	width: 16px;
+	height: 16px;
+}
+.s16 .icone-fonction:after {
+	background-size: 8px;
+}
+.s24 .icone-image img {
+	width: 24px;
+	height: 24px;
+}
+.s24 .icone-fonction:after {
+	background-size: 12px;
+}
+.s32 .icone-image img {
+	width: 32px;
+	height: 32px;
+}
+.s32 .icone-fonction:after {
+	background-size: 16px;
+}
+
+/* Variantes alignement */
+.icone.left {
+	float: #ENV{left};
+}
+.icone.horizontale.left,
+.icone.horizontale.right {
+	clear: none;
+}
+.icone.right {
+	float: #ENV{right};
+}
+.icone.center {
+	clear: both;
+	display: table !important; /* Seule façon d'auto-centrer un élément indépendamment du parent */
+	margin-left: auto;
+	margin-right: auto;
+}
+.icone.clearleft {
+	clear: #ENV{left};
+}
+.icone.clearright {
+	clear: #ENV{right};
+}
+
+
+/* Variantes sans texte ou sans image */
+.icones_img .icone a b {
+	display: none;
+}
+.icones_texte .icone .icone-image {
+	display: none;
+}
+.icones_texte .icone.horizontale:not(.danger) {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* Variante danger (à mutualiser avec boutons.css ?) */
+.icone.danger a {
+	background-image: url(#CHEMIN_IMAGE{rayures-sup.svg});
+	background-color: transparent;
+}
+.icone.danger b {
+	color: #222;
+	text-shadow: 0 0 0.25em white, 0 0 0.5em white, 0 0 1em white; /* Lisibilité */
+}
+.icone.danger .icone-image {
+	background-color: #fff;
+	border: 2px solid #ff9999;
+}
+.icone.danger a:hover b,
+.icone.danger a:focus b {
+	color: red !important;
+}
+.icone.danger a:hover .icone-image,
+.icone.danger a:focus .icone-image {
+	background-color: #fff;
+	border-color: red;
+}
+.icone.horizontale.danger a {
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+}
+.icone.horizontale.danger .icone-image {
+	background: none;
+	border: none;
+}
+.icone.horizontale.danger a:hover .icone-image,
+.icone.horizontale.danger a:focus .icone-image {
+	background: none;
+}
+
+/* Cas particuliers */
+.icone.verticale.historique-24 {
+	width: 90px;
+}
+.icone.verticale.suivi-forum-24 {
+	width: 100px;
+}
+.icone.verticale.edition_deja,
+.icone.verticale.edition_deja a,
+.icone.verticale.edition_deja a b {
+	width: 100px;
+}
+.icone.verticale.edition_deja a b {
+	height: [(#ENV{line-height}|strmult{3}|strdiv{#GET{iconfontsize}})em];
+}
+
+
+/* ==================
+ * 2. Divers & oldies
+ * ==================
+ */
+
+/* icone en bord haut du cadre */
+.cadre-icone {
+	position: absolute;
+	top: -16px;
+	#ENV{left}: 10px;
+	z-index:1;
+	max-width:24px;
+	height:auto;
+}
+
+.iconeoff {
+	padding: 3px;
+	margin: 1px;
+	border: 1px dashed #ccc;
+	background-color: #f0f0f0;
+}
+
+.iconeon {
+	cursor: pointer;
+	padding: 3px;
+	margin: 1px;
+	border-#ENV{right}: solid 1px #fff;
+	border-bottom: solid 1px #fff;
+	border-#ENV{left}: solid 1px #666;
+	border-top: solid 1px #666;
+	background-color: #eee;
+}
+
+.iconedanger {
+	padding: 3px;
+	margin: 1px;
+	border: 1px dashed #000;
+	background: #fce8dd url(#CHEMIN_IMAGE{rayures-danger.svg});
+}
+
+/* OLDIES anciennes icones issues de php */
+td.icone table {}
+
+td.icone a {
+	color: #000;
+	text-decoration: none;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+td.icone a:hover {
+	text-decoration: none;
+}
+
+td.icone a img {
+	border: 0;
+}

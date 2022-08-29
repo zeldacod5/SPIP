@@ -1,0 +1,245 @@
+[(#REM)
+
+	Ce squelette definit les styles de l'espace prive
+
+	Note: l'entete "Vary:" sert a repousser l'entete par
+	defaut "Vary: Cookie,Accept-Encoding", qui est (un peu)
+	genant en cas de "rotation du cookie de session" apres
+	un changement d'IP (effet de clignotement).
+	<style>
+
+/* --------------------------------------------------------------
+
+   typo.css.html
+   Base typographique
+   Cf.: https://contrib.spip.net/3820
+
+-------------------------------------------------------------- */
+]
+#CACHE{3600*100,cache-client}
+#HTTP_HEADER{Content-Type: text/css; charset=utf-8}
+#HTTP_HEADER{Vary: Accept-Encoding}
+
+#SET{claire,##ENV{couleur_claire,edf3fe}}
+#SET{foncee,##ENV{couleur_foncee,3874b0}}
+#SET{left,#ENV{ltr}|choixsiegal{left,left,right}}
+#SET{right,#ENV{ltr}|choixsiegal{left,right,left}}
+#SET{rtl,#ENV{ltr}|choixsiegal{left,'',_rtl}}
+
+/* Valeurs par defaut :
+#SET{font-size,#ENV{font-size,1em}} [ font-size: (#GET{font-size});]
+#SET{line-height,#ENV{line-height,1.2em}} [ line-height: (#GET{line-height});]
+#SET{margin-bottom,#ENV{margin-bottom,1.2em}} [ margin-bottom: (#GET{margin-bottom});]
+#SET{text-indent,#ENV{text-indent,50px}} [ text-indent: (#GET{text-indent});]
+#SET{font-family,#ENV*{font-family,'Verdana, Geneva, sans-serif'}} [ font-family: (#GET{font-family});]
+#SET{background-color,#ENV{background-color,#F8F7F3}} [ background-color : (#GET{background-color});]
+#SET{color,#ENV{color,#000000}} [ color: (#GET{color});]
+*/
+
+html { font-size: 100.01%; } /* Cf.: http://www.pompage.net/pompe/definir-des-tailles-de-polices-en-CSS/ */
+body {
+  background: #GET{background-color};
+  font: #GET{font-size}/#GET{line-height}[ (#GET{font-family})];
+  color: #GET{color};
+}
+@media (min-width: 960px) {
+	body {
+		font: [(#GET{font-size}|strmult{14}|strdiv{13}|round{4})em]/#GET{line-height}[ (#GET{font-family})];
+	}
+}
+@media (min-width: 1200px) {
+	body {
+		font: [(#GET{font-size}|strmult{15}|strdiv{13}|round{4})em]/#GET{line-height}[ (#GET{font-family})];
+	}
+}
+
+/* Titraille / Intertitres */
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6 { margin: 0; padding: 0; font-size: 100%; font-weight: normal; }
+hr { height: 1px; margin:[ (#GET{margin-bottom})] 0; border: 0; background: #GET{color}; color: #GET{color}; }
+
+/* Titraille Blueprint
+Cf. : http://www.blueprintcss.org/tests/parts/elements.html
+h1 { font-size: 3em; line-height: 1; margin-bottom: 0.5em; }
+h2 { font-size: 2em; margin-bottom: 0.75em; }
+h3 { font-size: 1.5em; line-height: 1; margin-bottom: 1em; }
+h4 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; }
+h5 { font-size: 1em; font-weight: bold; margin-bottom: 1.5em; }
+h6 { font-size: 1em; font-weight: bold; }*/
+
+#SET{coeff,#GET{line-height}|strplus{2}|strdiv{2}|strdiv{#GET{line-height}}}
+#SET{coeffinv,#VAL{1}|strdiv{#GET{coeff}}}
+h1,.h1 {[ font-size: (#GET{line-height}|strmult{#GET{coeff}})em];[ line-height: (#GET{coeffinv}|strmult{2})em];[ margin-bottom: (#GET{coeffinv})em;]}
+h2,.h2 {[ font-size: (#GET{line-height}|strmult{1})em]; line-height: 1; margin-bottom: 1em; font-weight: bold;}
+#SET{coeff,#GET{line-height}|strplus{1}|strdiv{2}|strdiv{#GET{line-height}}}
+#SET{coeffinv,#VAL{1}|strdiv{#GET{coeff}}}
+h3,.h3 {[ font-size: (#GET{line-height}|strmult{#GET{coeff}})em];[ line-height: (#GET{coeffinv})em];[ margin-bottom: (#GET{coeffinv})em;]font-weight: bold; }
+#SET{coeff,#GET{line-height}|strplus{3}|strdiv{4}|strdiv{#GET{line-height}}}
+#SET{coeffinv,#VAL{1}|strdiv{#GET{coeff}}}
+h4,.h4,caption {[ font-size: (#GET{line-height}|strmult{#GET{coeff}})em];[ line-height: (#GET{coeffinv})em];[ margin-bottom: (#GET{coeffinv})em;]font-weight: bold; }
+h5,.h5 { font-size: 1em; font-weight: bold; margin-bottom: #GET{margin-bottom}; }
+h6,.h6 { font-size: 1em; font-weight: bold; }
+h3.titrem {
+	position: relative;
+}
+
+/* Titre de section.
+   Ils reprennent l'affichage des entêtes de boîtes.
+   Utile pour démarrer une section sur une fiche d'objet par exemple,
+   tout en gardant un affichage consistant avec les blocs de formulaires, listes, etc. */
+.titrem_section {
+	display: block;
+	padding: var(--spip-box-spacing-y-mini) var(--spip-box-spacing-x-mini);
+	margin: var(--spip-spacing-y) 0;
+	font-size: var(--spip-box-heading-fontsize-mini);
+	font-weight: var(--spip-box-heading-fontweight);
+	border-radius: var(--spip-box-border-radius);
+	background-color: var(--spip-color-gray-lightest);
+}
+
+
+#haut h1,h1.grostitre {margin-top:[(#ENV{margin-bottom}|strmult{1.5}|strdiv{2}|strdiv{#GET{line-height}})em]}
+
+/* Enrichissements typographiques */
+strong, b { font-weight: bold; }
+em, i { font-style: italic; }
+small, .small { font-size: 80%; }
+big, .big { font-size: 150%; }
+abbr[title], acronym[title] { border-bottom: .1em dotted;  text-decoration: none; cursor: help; }
+dfn { font-weight: bold; font-style: italic; }
+del { text-decoration: line-through; }
+ins { text-decoration: none; background-color: #FFC; }
+sup, sub { font-size: .8em; font-variant: normal; line-height: 0; }
+sup { vertical-align: super; }
+sub { vertical-align: sub; }
+.caps { font-variant: small-caps; }
+
+/* Listes */
+ul, ol, li, dl, dt, dd {}
+ul ul, ol ol, ul ol, ol ul { margin-top: 0; margin-bottom: 0; }
+
+dl dt { font-weight: bold; }
+dl dd {}
+
+/* Citations, code et poesie */
+q { font-style: italic; }
+blockquote { padding: 0 #GET{text-indent}; font-style: italic; }
+cite { font-style: italic; }
+
+address { font-style: italic; }
+
+pre,code,kbd,samp,var,tt { font-family: 'lucida console',monospace; font-size: 1em; }
+pre { margin:[ (#GET{margin-bottom}) ]0; white-space: pre; }
+kbd { background-color: #GET{color}; color: #GET{background-color}; }
+samp { font-weight: bold; }
+var { font-style: italic; }
+
+/* Paragraphes */
+p, .p, dl, dd, blockquote, address, pre, table, fieldset { margin-bottom: #GET{margin-bottom}; }
+
+/* Liens */
+a {}
+a:hover {}
+a[hreflang]:after { content: "\0000a0[" attr(hreflang) "]"; display: inline-block;}
+.on { font-weight: bold; }
+
+/* end */
+
+/*
+ * Specificites de code SPIP (ex spip-styles.css)
+ */
+
+.spip-puce b {display:none;}
+.spip-puce {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-style: normal;
+	font-weight: bold;
+	font-size: 1.4em;
+  line-height: 0.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.spip-puce:before {
+	content: "\203A";
+}
+
+
+/* Listes SPIP */
+ul.spip,.formulaire_spip ul.spip, #conteneur ul.spip { list-style: square; margin-bottom:#ENV{margin-bottom};}
+ul.spip ul, #conteneur ul.spip ul { list-style: circle; }
+ol.spip, #conteneur ol.spip { list-style: decimal; margin-bottom:#ENV{margin-bottom};}
+
+ul.spip li, ol.spip li, #conteneur ul.spip li  {margin-#ENV{left}:#ENV{text-indent};}
+ul.spip li li, ol.spip li li, #conteneur ul.spip li li {margin-#ENV{left}:[(#ENV{text-indent}|strdiv{2})px];}
+
+/* Citations, code et poesie */
+/*blockquote.spip { margin: 2em 0; padding-left: 1em; border-left: 0.30em solid; }
+blockquote.spip_poesie { margin: 2em 0; padding-left: 1em; border-left: 1px solid; font-family: Garamond, Georgia, Times, serif; }
+blockquote.spip_poesie div { text-indent: -3em; margin-left: 3em; }
+*/
+.spip_code, .spip_cadre { color: #336; }
+.spip_cadre { width: 99%; background-color: #F3F3F3; border: 1px dotted #ddd; padding:5px;box-sizing:border-box;}
+div.spip_code, .spip_cadre { margin-bottom: #ENV{margin-bottom}; }
+
+.spip_surligne { background: #FF6; }
+
+/* Logos, documents et images */
+img, .spip_logo { margin: 0; padding: 0; border: 0; max-width: 100%;height: auto;}
+.spip_documents { text-align: center; margin-bottom: #ENV{margin-bottom}; margin-left:auto; margin-right:auto; max-width:100%; }
+.spip_documents,
+.spip_documents_center,
+.spip_doc_titre,
+.spip_doc_descriptif,
+.spip_doc_credits { margin-right: auto; margin-left: auto; text-align: center; min-width: 120px; }
+.spip_documents_center { display: block; clear: both; width: 100%; margin: [(#ENV{margin-bottom})] auto; }
+.spip_documents_left { float: #ENV{left}; margin-#ENV{right}: 15px; margin-bottom: [(#ENV{margin-bottom})]; max-width: 33%; }
+.spip_documents_right { float: #ENV{right}; margin-#ENV{left}: 15px; margin-bottom: [(#ENV{margin-bottom})]; max-width: 33%; }
+.spip_documents p { margin: 0.10em; padding: 0;}
+.spip_doc_titre { margin-right: auto; margin-left: auto; font-weight: bold; font-size: 0.90em; line-height: 1.25; }
+.spip_doc_descriptif { clear: both; margin-right: auto; margin-left: auto; font-size: 0.90em; line-height: 1.25; }
+.spip_doc_credits { clear: both; margin-right: auto; margin-left: auto; font-size: 0.90em; font-style:italic; line-height: 1.25; }
+.spip_doc_legende { display: block;clear: both; margin-left: auto; margin-right: auto; width: 100%; max-width: 25em; }
+.spip_documents>a { display: inline-block; }
+.spip_documents img,.spip_documents svg { max-width: 100%; height: auto; }
+.spip_documents table { text-align: left; }
+table.spip .spip_document_image {width: auto !important;}
+
+/* Adaptation aux nouveaux modeles document SPIP 4.0 */
+.spip_document { display: flex; justify-content: center;align-items: center}
+.spip_doc_inner{ margin:0 auto;text-align: center;max-width: 100%;}
+.spip_doc_inner>* {margin-left: auto;margin-right: auto;}
+.spip_document .spip_doc_lien { display: inline-block; }
+.spip_doc_legende { display: block; max-width: 25em; }
+/* Fin adaptation */
+
+@media (max-width: 480px) {
+	.spip_documents_left, .spip_documents_right { float: none; margin-left: auto; margin-right: auto; max-width:100%; }
+}
+
+
+/* modeles par defaut */
+.spip_modele { float: right; display: block; padding: 1em; border: 1px solid; width: 180px; }
+
+/* Couleurs des liens de SPIP */
+a.spip_note {} /* liens vers notes de bas de page */
+a.spip_ancre {} /* liens internes a la page */
+a.spip_in {} /* liens internes */
+a.spip_mail { color: #900; }
+a.spip_mail:before { content: "\002709"; } /* liens vers un email */
+/* liens sortants */
+a.spip_out,
+a[rel=external] {
+	color: #009;
+}
+a.spip_out:after,
+a[rel=external]:after {
+	content: "\0000a0\279A";
+}
+a.spip_url { color: #009; } /* liens url sortants */
+a.spip_url.auto {word-break: break-word;}
+a.spip_glossaire { color: #060; } /* liens vers encyclopedie */
+a.spip_glossaire:hover { text-decoration: underline overline; }
+a[hreflang]:after { content: "\0000a0[" attr(hreflang) "]";color:#888; display: inline-block;}
+.on { font-weight: bold; } /* liens exposes */

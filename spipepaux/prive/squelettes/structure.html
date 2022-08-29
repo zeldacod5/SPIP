@@ -1,0 +1,10 @@
+#HTTP_HEADER{Cache-Control: no-cache,must-revalidate}
+#HTTP_HEADER{Pragma: no-cache}
+#CONST{_DOCTYPE_ECRIRE}
+<html class="[(#LANG_DIR)][ (#LANG)] no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<INCLURE{fond=prive/squelettes/head/#ENV{type-page},env,espace_prive=1}>
+</head>
+[(#LISTE{titre,sinon}|sanitize_env)]
+<INCLURE{fond=prive/squelettes/body,env,espace_prive=1}>
+</html>

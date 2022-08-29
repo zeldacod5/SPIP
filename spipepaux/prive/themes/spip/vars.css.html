@@ -1,0 +1,34 @@
+[(#REM)
+
+	Ce squelette definit les styles de l'espace prive
+
+	Déclarations de variables CSS.
+	<style>
+]
+#CACHE{3600*100,cache-client}
+#HTTP_HEADER{Content-Type: text/css; charset=utf-8}
+#HTTP_HEADER{Vary: Accept-Encoding}
+
+
+:root {
+	[(#REM) Dépend pour le moment de l’environnement ]
+	[(#VAL|spip_generer_variables_css_typo)]
+
+	[(#ENV{couleur_theme}|spip_generer_variables_css_couleurs_theme)]
+}
+
+:root,
+[data-spip-theme-colors],
+[class*="spip-theme-colors"] {
+	[(#VAL|spip_generer_variables_css_couleurs)]
+}
+
+
+#SET{couleurs,#VAL{couleurs}|charger_fonction{inc}}
+#SET{couleurs,#GET{couleurs}|call_user_func}
+<BOUCLE_themes(DATA){source table, #GET{couleurs}}>
+[data-spip-theme-colors="#CLE"],
+.spip-theme-colors-#CLE {
+	[(#VALEUR{couleur_theme}|spip_generer_variables_css_couleurs_theme)]
+}
+</BOUCLE_themes>

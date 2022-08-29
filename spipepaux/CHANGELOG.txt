@@ -1,0 +1,168 @@
+SPIP-Core v4.0.0 -> v4.0.1 (14 December 2021)
+---------------------------------------------
+
+4f240aef7 | marcimat         | 2021-12-10 | Ticket #4950 : Éviter que la date modif soit modifiée lors de la migration des logos.
+40301be0b | cedric           | 2021-12-13 | Fix la perte des logos en cas de double migration : il faut repartir de IMG/logo/ deja cree a la premiere migration (c..
+abc62dc66 | bruno            | 2021-10-28 | Compat PHP 8 pour le filtre `|affdate`
+2db7af727 | jluc             | 2021-12-09 | fixes  #4956 éviter notice balise #SAUTER (+ éviter ligne inutile et variable inutilisée)
+44e7c2e8f | cedric           | 2021-12-07 | Ameliorer valider_url_distante() : on utilise filter_var plutot que des regexp et on ajoute un controle sur le TTL du ..
+58338eb0d | marcimat         | 2021-12-08 | Report des chaines de langue depuis master (salvatore)
+0132da476 | mathieualphamosa | 2021-09-21 | Utilisation de la constante _IMG_ADMIN_MAX_WIDTH
+865a383bc | mathieualphamosa | 2021-09-21 | Utilisation de la constante _IMG_ADMIN_MAX_WIDTH
+ce156dbf9 | mathieualphamosa | 2021-09-21 | Utilisation de la constante _IMG_ADMIN_MAX_WIDTH
+d38ffee5d | mathieualphamosa | 2021-09-21 | Ajout d'une constante pour définir la largeur maximale des images
+14b883a7c | mathieualphamosa | 2021-09-17 | réduction des images à 768px
+bc286f88f | mathieualphamosa | 2021-09-17 | réduction des images à 768px
+e49d7b0b7 | mathieualphamosa | 2021-09-17 | réduction des images à 768px
+50d312b62 | jluc             | 2021-09-28 | Il arrive que le job ne soit déjà plus là (pierretux) + compléments de phpdoc - fixes #4907
+419912dcd | cedric           | 2021-11-17 | Fix un problème recurent de fuite de données lorsque les utilisateur mettent un #FORMULAIRE_TRUC dans un modeles/xxxx...
+2b4e21c71 | bruno            | 2021-11-29 | warning en moins sur envoyer_mail
+f2dd985fb | bruno            | 2021-11-18 | form editer_logo : un timestamp sur lien d'aperçu dans une modale
+097b8a7ea | bruno            | 2021-11-18 | cohérence, double quotes tout le temps sur les attributs HTML
+2a66d7b23 | mathieualphamosa | 2021-09-28 | Ticket #4852 : Apparence unifiée pour les select
+9059ab64c | bruno            | 2021-10-28 | ne pas utiliser les valeur par défaut du picker en langue anglaise
+ea93301fd | cedric           | 2021-08-18 | sql_in() ne permet pas de passer le type du champ a quoter, ce qui peut etre un probleme #4862 On introduit la fonctio..
+d05642822 | jluc             | 2021-10-27 | Tester _FILE_LOG avant de l'utiliser - Fixes #4929
+32f92d0d0 | cedric           | 2021-10-26 | Petite amelioration pour ne rechercher que sur la partie du document rechargee apres un ajaxLoad
+7e0492b32 | bitbucket        | 2021-09-10 | assurer onAjaxLoad pour surligner les mots même lors d'un rechagrment des elements trouvés lors d'une recherche issue ..
+f2c719ef9 | bruno            | 2021-09-07 | utiliser charger_fonction() avant d'appeler generer_htpass()
+73bee7466 | cedric           | 2021-10-26 | Fix l'icone d'alerte a droite en RTL sans erreur
+69346103c | george           | 2021-07-24 | L'icone d'alerte a droite en RTL
+98c93e124 | george           | 2021-07-11 | Correction en RTL
+380b1507f | bruno            | 2021-10-14 | ajout d'un fichier pour expliquer où trouver l'info pour signaler une faille
+818e294a1 | cedric           | 2021-10-25 | Produire la miniature de 64px quand on edite le logo pour anticiper un eventuel plantage pour cause image trop grosse
+d8a0b7760 | cedric           | 2021-10-25 | Quand l'utilisateur mets une image lourde en fond d'écran pour le login, on a pas de background pendant tout le charge..
+faeab6089 | cedric           | 2021-10-25 | Afficher le poids des logos en plus de leur dimension, car on a vite fait de perdre de vue qu'on envoie des logos dont..
+817ead0ce | marcimat         | 2021-09-12 | Correction de label_nettoyer() pour ne pas qu’il mange certains caractères utf8. trim() n’est pas multibytes : on doit..
+c3e1c9518 | cedric           | 2021-10-25 | RWD des svg <emb> : il faut aussi leur imposer un max-width et un height:auto (Luc)
+b892e6230 | cedric           | 2021-10-21 | Lors de l'upload de documents, gerer le cas des fichiers avec multiples extensions : on ne laisse que celles qui sont ..
+8e3da4e3e | cedric           | 2021-10-21 | Refactoring du formatage du nom de fichier, pour plus de lisibilite
+21183b9f8 | cedric           | 2021-10-21 | Ne pas appliquer file_get_contents() sur une URL par megarde : faire un copie_locale si on reconnait l'URL, et un file..
+97e2888e9 | cedric           | 2021-10-21 | Refactoring de distant : - sort dans une fonction dediee le code charge d'identifier l'extension d'un fichier selon le..
+353f4092b | cedric           | 2021-10-21 | Quand on fait une copie locale d'une image pour la filtrer ensuite, ne pas oublier de passer un coup de sanitizer si b..
+d3138f8fe | cedric           | 2021-10-21 | Coquille restante d'un renommage de l'option
+9069c94ca | cedric           | 2021-10-21 | Il faut incrementer spip_version_code car tous les formulaires doivent etre recalcules
+d2e178579 | cedric           | 2021-10-21 | Oups, erreur dans 1b8e4f404 il faut utiliser empty car on poste potentiellement une signature vide (empechait de se lo..
+1df63da73 | cedric           | 2021-10-06 | Nom, nom_site et bio etant des champs librement modifiables par les utilisateurs, on les protege comme des forums, via..
+92a80cd72 | cedric           | 2021-10-06 | Balise #FORMULAIRE : nettoyer du code mort qui ne sert plus, ameliorer la securite en ajoutant une signature des argum..
+c4f08615f | cedric           | 2021-10-21 | Avec un plongeur qui fait 50vh, quand on le déplie le bouton Choisir est la plupart du temps sous la ligne de flotaiso..
+93bb05eea | cedric           | 2021-10-20 | Accélerer SPIP 4 en retrouvant les fichiers cache au lieu de calculer à chaque fois, ça ira mieux :) (merci à Christop..
+d63d5d466 | cedric           | 2021-09-27 | Complement de 413ca3cc58 : _mysql_traite_query() s'appelle recursivement, elle ne doit echapper les textes qu'au premi..
+536047c43 | cedric           | 2021-09-23 | Attention, coquille : defaut sert a remplir ce qui n'est pas dans options
+84e3af304 | bruno            | 2021-09-23 | définir `$primary` dans `styliser_modele()`
+c81458a6a | cedric           | 2021-09-17 | Simplifier la regexp, c'est pas plus mal (cfreal)
+f5ea5956b | cedric           | 2021-09-06 | Fix/refactoring query_echappe_textes() qui ne detectait parfois pas completement et correctement les chaines On robust..
+438a5e92d | cedric           | 2021-09-17 | autocomplete=off n'est plus trop supporte par les browsers modernes sur les champs de login car ils proposent le rempl..
+a76ef9b7f | marcimat         | 2021-09-11 | Corriger quelques problèmes d’intentations non traités par phpcs
+87477cd49 | pierretux        | 2021-09-06 | Ticket #4878 : Mise à jour du code de http_status pour utiliser directement la function de php
+9bca05277 | cedric           | 2021-07-24 | Un argument supplementaire $callback_prefix qui permet d'utiliser des callback prefixees ou dans un namespace sans dev..
+01b608905 | cedric           | 2021-08-26 | Fix #4866 : tous les comptages de rang se font avec un where calcule via la fonction lien_rang_where() qui par defaut ..
+2dda58b9a | james            | 2021-08-28 | fix(cs): Passe unique d'autofix
+6f05a88ca | james            | 2021-08-26 | feat(spip/coding-standards): Mise en place de l'outil
+204b874f2 | cedric           | 2021-08-23 | Fix style des modeles de document qui n'etaient pas complets (ie les players embed collent a gauche dans ecrire/)
+77f081c99 | marcimat         | 2021-08-19 | Définir boucle->primary aussi pour la création d’une boucle en PHP car des plugins (via le pipeline pre_boucle) s’atte..
+bb50a8b4a | cedric           | 2021-08-16 | Oubli dans 2b3d16f0057e105fa5673804dcdf1070d560da16 : il faut aussi prendre en compte la constante _DEBUG_TRACE_QUERIE..
+1582f707b | cedric           | 2021-08-13 | Eviter des notices sur l'utilisation des balises #GET/#ENV/#SESSION : on utiliser l'operateur ?? et on evite des @
+52d83b0b6 | cedric           | 2021-08-12 | Petit bug vicieux sur le bouton de vidage de cache quand on est en mode _CACHE_CONTEXTES_AJAX : - le bouton 'vider le ..
+7080f2e1c | cedric           | 2021-08-05 | Des logs un peu plus consistants
+cb04134c8 | cedric           | 2021-08-05 | l'inclusion de inc/autoriser n'est pas toujours faites en amont
+60fe183a9 | cedric           | 2021-08-04 | Utilisons _IS_CLI pour differencier la sortie lors de l'install/maj des plugin ou du core
+ec23f97c5 | cedric           | 2021-07-27 | Bugfix sqlite sur le traitement des cas `SELECT 0 as num + ORDER BY num` : avec l'ajout d'une clause sinum systematiqu..
+0604635df | cedric           | 2021-07-23 | Eviter une indefinie en CLI + utiliser une egalite stricte ===
+ef4fa1978 | mathieualphamosa | 2021-07-22 | Suppression d'un debug JS (#4847)
+33593da77 | cedric           | 2021-07-23 | Fix les formulaires qui ont des .editer-groupe dans les .choix, comme facteur ou mailshot, pour afficher des sous-part..
+8f2c8cfbe | cedric           | 2021-07-12 | Un selecteur CSS + restrictif car sinon cela impacte par exemple tous les .label d'un formidable dans le texte d'un ar..
+b8fec87a0 | marcimat         | 2021-07-09 | PHPDoc erroné.
+473d4cbc8 | booz             | 2021-07-09 | [Salvatore] [source:ecrire/lang/ spip] Export depuis https://trad.spip.net de la langue ja
+1ebca1a31 | booz             | 2021-07-08 | [Salvatore] [source:ecrire/lang/ spip] Export depuis https://trad.spip.net de la langue ja
+
+
+
+SPIP-plugins-dist v4.0.0 -> v4.0.1 (14 December 2021)
+-----------------------------------------------------
+
+aide            | 1613ae6 | marcimat     | 2021-12-10 | Report des chaines de langue depuis master (salvatore)
+aide            | 288583a | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4614)
+archiviste      | e557008 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4414)
+bigup           | 86f5073 | marcimat     | 2021-12-14 | Ticket #4851 : Pour vérifier côté PHP que le nombre de morceaux de fichiers reçu est corrects, on utilise le nombre de..
+bigup           | 9c77ab2 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4845)
+bigup           | 5a0c503 | marcimat     | 2021-12-08 | Report des chaines de langue depuis master (salvatore)
+bigup           | e77ec5b | marcimat     | 2021-12-08 | Bien tester que le *dernier* chunk uploadé soit arrivé pour reconstituer le fichier final. Effectivement, on verifiait..
+bigup           | 8f4eaa7 | marcimat     | 2021-12-08 | Réduire le nombre de tentative de retry à 5. Ça suffira. En même temps, permettre de transmettre certains paramètres à..
+bigup           | 9f772a9 | g0uz         | 2021-12-02 | Ticket #4849 : Gestion des exceptions javascript levées par JSON.parse() sur un flux non conforme JSON (erreur HTTP di..
+bigup           | f47e6db | cedric       | 2021-12-07 | Trigger 2 events supplementaires pour aider a interagir avec bigup : bigup.ready et bigup.fileRemoved (permet par exem..
+bigup           | 0614a19 | marcimat     | 2021-09-13 | Ticket #4846 : ne pas transmettre le `accept` du champ dans la query string, car la présence du mime type `image/svg+x..
+bigup           | 5b77079 | cedric       | 2021-09-03 | eviter un warning/notice en cas de concurrence d'upload
+compagnon       | 1513487 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4756)
+compagnon       | bbf53ee | marcimat     | 2021-12-08 | Report des chaines de langue depuis master (salvatore)
+compresseur     | 6df5558 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4839)
+compresseur     | 6e309f4 | marcimat     | 2021-12-08 | Report des chaines de langue depuis master (salvatore)
+compresseur     | 311abf8 | cedric       | 2021-10-25 | Supprimer le timestamp pour trouver le fichier a embarquer le cas echeant
+dump            | f16269e | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4716)
+filtres_images  | 7880647 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4684)
+filtres_images  | 3f2fc65 | cedric       | 2021-10-04 | Inclusion faite par image_filtrer() pour les filtres images standard mais manquante ici (bennyb)
+forum           | 19c5934 | marcimat     | 2021-09-11 | Corriger quelques problèmes d’intentations non traités par phpcs
+forum           | 6c6c332 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4748)
+forum           | 8de45b5 | jluc         | 2021-07-27 | fixes #4743 : Pas de lien sur le titre de l'objet auquel est associé un forum. C'est plus clair comme ça et il y a déj..
+forum           | 6dbf600 | marcimat     | 2021-08-20 | La fonction jquery.unload n’existe plus depuis jQuery 3
+mediabox        | c884d16 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4849)
+mediabox        | 923e99d | marcimat     | 2021-12-08 | Report des chaines de langue depuis master (salvatore)
+mediabox        | ac96079 | placido      | 2021-11-03 | Chemin erroné pour la configuration forcée d'une skin
+mediabox        | 83cdb1e | cedric       | 2021-10-21 | Fix certains cas d'images distantes qui n'étaient pas affichées par la mediabox (notamment des SVG), car l'image n'a p..
+mediabox        | 03144d8 | cedric       | 2021-09-14 | Complement de 7154b28 : le aria-describedby peut etre porte par la balise img contenue dans le lien
+mediabox        | 7154b28 | cedric       | 2021-09-14 | Fix le longdesc issu de aria-describedby
+medias          | dc37cc7 | marcimat     | 2021-12-14 | Ticket #4858 : petit espcae entre chaque attribut
+medias          | 56809c9 | marcimat     | 2021-09-11 | Corriger quelques problèmes d’intentations non traités par phpcs
+medias          | c76b596 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4854)
+medias          | 7a7d402 | cedric       | 2021-12-07 | Utiliser valider_url_distante() en plus de tester_url_absolue() avant de faire une copie locale sur un document distan..
+medias          | e2e6948 | bruno        | 2021-11-23 | placeholder en https
+medias          | a884779 | cedric       | 2021-10-21 | Quand on ajoute un document distant ne pas perdre la trace de la copie_locale eventuellement faite au passage, l'utili..
+medias          | 93f5336 | cedric       | 2021-09-23 | Sortir dans une fonction joindre_trouver_http_post_files() la lecture/remise en forme de $_FILES plutot que chaque plu..
+medias          | c6b193d | marcimat     | 2021-12-08 | Report des chaines de langue depuis master (salvatore)
+medias          | de0723a | cedric       | 2021-10-21 | Les images SVG sont integrees dans le html avec le modele emb au lieu d'etre affichee avec une balise img (Fix https:/..
+medias          | f836414 | cedric       | 2021-10-21 | PHPDoc de medias_trouver_modele_emb() Fix #4847
+medias          | 5402e0e | cedric       | 2021-08-23 | Ne pas se laisser deborder par un credit ou un titre qui reprend une URL longue comme un bras et qui fait exploser la ..
+medias          | e1ad540 | cedric       | 2021-07-27 | la coquille dans le potage (qui tue)
+mots            | 4e57bb7 | marcimat     | 2021-09-11 | Corriger quelques problèmes d’intentations non traités par phpcs
+mots            | e4c559c | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4793)
+mots            | a742818 | marcimat     | 2021-12-08 | Report des chaines de langue depuis master (salvatore)
+mots            | fe324eb | cedric       | 2021-11-03 | Suite à https://git.spip.net/spip/spip/commit/1b8e4f404c2441c15ca6540b9a6d8e50cff219db modernisons le traitement du fo..
+plan            | 90be998 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4829)
+plan            | 4a4a8dc | marcimat     | 2021-12-08 | Report des chaines de langue depuis master (salvatore)
+porte_plume     | 8bca40a | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4819)
+porte_plume     | 8c89a2a | bruno        | 2021-11-23 | passer tous les éléments de formulaires affichés dans la prévisu en disabled
+revisions       | 0d9f039 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4834)
+revisions       | f481d8e | marcimat     | 2021-07-16 | Le génie d’optimisation des révisions n’était plus trouvé depuis c35079b30a1e90ab : il y a un piège. Pour utiliser la ..
+safehtml        | b4933ee | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4777)
+sites           | 621a0c6 | marcimat     | 2021-09-11 | Corriger quelques problèmes d’intentations non traités par phpcs
+sites           | df7be22 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4833)
+sites           | 5d123be | marcimat     | 2021-12-08 | Report des chaines de langue depuis master (salvatore)
+sites           | 6486932 | jluc         | 2021-11-01 | fixes #4834 - dédoubler la date dans les listes d'articles syndiqués
+sites           | 5162c0c | jluc         | 2021-11-17 | connotea n'existe plus - fixes #4840
+sites           | 477056f | bruno        | 2021-11-23 | des placeholder en https plutôt que préremplir des champ avec http://
+sites           | f1f4aea | kikoot       | 2021-11-17 | Correction d'un mauvais nom de variable. Fix #4843.
+sites           | c73d100 | cedric       | 2021-09-24 | Reparer l'affichage de la liste des sites en colonne laterale : il faut la classe .principale sur le th aussi pour qu'..
+statistiques    | 5e5525d | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4852)
+statistiques    | 730db6a | marcimat     | 2021-12-08 | Report des chaines de langue depuis master (salvatore)
+svp             | a40234d | marcimat     | 2021-09-11 | Corriger quelques problèmes d’intentations non traités par phpcs
+svp             | 6f3847d | jamesrezo    | 2021-09-08 | qa-tools (#4836)
+svp             | cb6ea29 | marcimat     | 2021-12-08 | Report des chaines de langue depuis master (salvatore)
+svp             | 28f5446 | bruno        | 2021-12-06 | corriger l'affichage des messages d'erreur du formulaire charger_plugin
+svp             | 023f893 | marcimat     | 2021-09-15 | La dtd de plugin.xml aussi. (Qui repartira lors du découpage de SVP)
+svp             | fcc0439 | marcimat     | 2021-09-15 | Coup de phpcbf
+svp             | 722109c | marcimat     | 2021-09-15 | Ticket #4832 : on remet info plugin (il repartira lors de la séparation de SVP)
+svp             | 258e91a | comcinco     | 2021-09-02 | [Salvatore] [source:lang/ svp] Export depuis https://trad.spip.net de la langue es [Salvatore] [source:lang/ svp] Mise..
+svp             | 8b127ba | rporto       | 2021-08-20 | [Salvatore] [source:lang/ svp] Export depuis https://trad.spip.net de la langue pt_br [Salvatore] [source:lang/ svp] M..
+svp             | e339854 | ss1945       | 2021-08-18 | [Salvatore] [source:lang/ svp] Export depuis https://trad.spip.net de la langue ru [Salvatore] [source:lang/ svp] Mise..
+svp             | b730480 | bruno        | 2021-08-23 | toujours afficher le lien de doc du plugin
+svp             | 1d56cb7 | cerdic       | 2021-08-18 | Un pipeline svp_afficher_paquet qui permet de filtrer l'affichage des themes quand zengarden est actif (#4831)
+svp             | 4189d30 | marcimat     | 2021-07-16 | Notice php -- en CLI
+textwheel       | a253d3f | cedric       | 2021-10-26 | Fix https://git.spip.net/spip/spip/issues/4926 en gerant directement les class dans tw_traiter_autoliens() du coup
+textwheel       | 8412651 | cedric       | 2021-10-26 | Un test unitaire pour https://git.spip.net/spip/spip/issues/4926
+textwheel       | f4d2361 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4837)
+textwheel       | d6f6164 | cedric       | 2021-07-25 | La puce change en fonction de la direction du texte : sion la memorise dans une static cela genere un bug visieul si l..
+textwheel       | 41d2dc0 | cedric       | 2021-07-20 | lancement des tests plus robuste
+urls_etendues   | 253ebd4 | jamesrezo    | 2021-09-08 | feat(dev-tools): Mise en place phpcs+phpstan (#4807)
+urls_etendues   | 7bee5b2 | cedric       | 2021-10-27 | Fix https://git.spip.net/spip/spip/issues/4862 : utiliser sql_in_quote()
+urls_etendues   | 45eb374 | marcimat     | 2021-09-03 | Éviter deux warnings lorsqu’on appelle une `#URL_TRUC` alors que truc n’est pas un objet éditorial / une table connue ..
+squelettes-dist | 3108bde | cedric       | 2021-10-25 | Largeur maxi des img et svg de .spip_document (Luc)

@@ -1,0 +1,67 @@
+.a-block {
+    display: block;
+    background-size: cover;
+    background-position: center center;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 10px;
+    height: 300px;
+}
+
+.a-block .text.half-to-full {
+    max-width: 50%;
+}
+
+.card {
+    background-color: transparent;
+    border: none;
+
+}
+
+.card-body {
+    flex: none !important;
+    padding: 0 !important;
+}
+
+.no_souligne {
+    text-decoration: none !important;
+}
+
+.biographie img {
+    max-width: 250px;
+    margin-top: -4em;
+    position: relative;
+}
+.biographie{
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    font-weight: 400;
+    padding-top: 25px;
+    margin-top: 80px;
+}
+
+.mapresa img {
+    max-width: 300px;
+    position: relative;
+}
+
+#footer {
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+}
+
+.logo_footer_article img {
+    width: 200px;
+
+}
+
+.paname img {
+    max-width: 200px;
+    position: relative;
+}
+
+#assoimg {
+    max-width: 350px;
+}
